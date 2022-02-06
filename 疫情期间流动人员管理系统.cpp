@@ -4,7 +4,7 @@
 using namespace std;
 #include"Identity.h"
 #include"globalFile.h"
-//by:liuhao
+//by:liuhao20021231
 
 //登录LoginIn
 void LoginIn(string fileName,int type)
