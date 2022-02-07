@@ -9,7 +9,61 @@ using namespace std;
 #include "Manager.h"
 
 //by:北辰
+// 输出主界面
+void priMenu();
+//准备登录
+void log(bool boo);
+//登录
 void LoginIn(string fileName, string name, string pwd, bool val);
+
+int main()
+{
+	//创建一个变量记录选择
+	int choose = 0;
+	while (true)
+	{
+		//输出主界面
+		priMenu();
+		cout << "请输入您的选择：\n";
+		cin >> choose;
+		bool val = false;//记录登录状态
+		switch (choose)
+		{
+		case 1://登录
+			//准备接受用户的信息
+			log(val);
+			break;
+		case 2://注册
+			break;
+		case 3://退出系统
+			cout << "感谢您使用！" << endl;
+			return 0;
+			system("pause");
+			break;
+		default:
+			cout << "输入有误，请重新选择！" << endl;
+			system("pause");
+			system("cls");//刷新界面，相当于删除错误输出和提示
+			break;
+		}
+	}
+	system("pause");
+	return 0;
+}
+
+//输出主界面
+void priMenu()
+{
+	cout << "\t\t -------------------------------\n";
+	cout << "\t\t|                               |\n";
+	cout << "\t\t|          1.登    录           |\n";
+	cout << "\t\t|                               |\n";
+	cout << "\t\t|          2.注    册           |\n";
+	cout << "\t\t|                               |\n";
+	cout << "\t\t|          3.退    出           |\n";
+	cout << "\t\t|                               |\n";
+	cout << "\t\t -------------------------------\n";
+}
 //准备登录
 void log(bool boo)
 {
@@ -34,29 +88,29 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 
 	string fName;
 	string fPwd;
-	int shenfen = 0;
-	while (ifs >> fName && ifs >> fPwd && ifs >> shenfen)
+	int sta = 0;//txt中第三列表示身份：1、普通人2、流动人员3、管理员
+	while (ifs >> fName && ifs >> fPwd && ifs >> sta)
 	{
 		if (name == fName && pwd == fPwd)
 		{
 			val = true;
-			if (shenfen == 1)
+			if (sta == 1)
 			{
 				cout << "普通人";
 				person = new Ordinary(name, pwd);
 				//进入普通人子页面
 			}
-			else if (shenfen == 2)
+			else if (sta == 2)
 			{
 				cout << "流动人员";
 				person = new Ordinary(name, pwd);
-				//
+				//进入流动人员子界面
 			}
-			else if (shenfen == 3)
+			else if (sta == 3)
 			{
 				cout << "管理员";
 				person = new Ordinary(name, pwd);
-				//
+				//进入管理员子界面
 			}
 			cout << "验证登录成功！" << endl;
 
@@ -68,50 +122,8 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 	}
 	if (!val)
 	{
+		priMenu();
 		cout << "用户名或密码错误\n请重新输入密码" << endl;
-		log( val);
+		log(val);
 	}
-}
-
-int main()
-{
-	//创建一个变量记录选择
-	int choose = 0;
-	while (true)
-	{
-		//输出登录界面
-		cout << "\t\t -------------------------------\n";
-		cout << "\t\t|                               |\n";
-		cout << "\t\t|          1.登    录           |\n";
-		cout << "\t\t|                               |\n";
-		cout << "\t\t|          2.注    册           |\n";
-		cout << "\t\t|                               |\n";
-		cout << "\t\t|          3.退    出           |\n";
-		cout << "\t\t|                               |\n";
-		cout << "\t\t -------------------------------\n";
-		cout << "请输入您的选择：\n";
-		cin >> choose;
-		bool val = false;
-		switch (choose)
-		{
-		case 1://登录
-			//准备接受用户的信息
-			log(val);
-			break;
-		case 2://注册
-			break;
-		case 3://退出系统
-			cout << "感谢您使用！" << endl;
-			return 0;
-			system("pause");
-			break;
-		default:
-			cout << "输入有误，请重新选择！" << endl;
-			system("pause");
-			system("cls");//刷新界面，相当于删除错误输出和提示
-			break;
-		}
-	}
-	system("pause");
-	return 0;
 }
