@@ -101,28 +101,20 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 			val = true;
 			if (sta == 1)
 			{
-				cout << "普通用户："<<fName<<endl;
 				person = new Ordinary(name, pwd);
 				//进入普通用户子页面
 			}
 			else if (sta == 2)
 			{
-				cout << "流动人员：" << fName << endl;
 				person = new Mobile(name, pwd);
 				//进入流动人员子界面
 			}
 			else if (sta == 3)
 			{
-				cout << "管理员：" << fName << endl;
 				person = new Manager(name, pwd);
 				//进入管理员子界面
 				managerMenu(person);
 			}
-			cout << "验证登录成功！" << endl;
-
-			system("pause");
-			system("cls");
-
 			return;
 		}
 	}
