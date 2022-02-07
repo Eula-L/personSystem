@@ -39,22 +39,24 @@ void LoginIn(string fileName,int type)
 		//普通人验证登录
 		string fName;
 		string fPwd;
+		bool val = false;//用于记录登录验证
 		while (ifs >> fName && ifs >> fPwd)
 		{
 			if (name == fName && pwd == fPwd)
 			{
 				cout << "普通人验证登录成功！" << endl;
+				val = true;
 				system("pause");
 				system("cls");
 				person = new Ordinary(name, pwd);
 				return;
 			}
-			else
-			{
-				cout << "用户名或密码有误，请重新输入" << endl;
-				LoginIn(ORDINARY_FILE, 1);
-				return;
-			}
+		}
+		if (!val)
+		{
+			cout << "用户名或密码有误，请重新输入" << endl;
+			LoginIn(ORDINARY_FILE, 1);
+			return;
 		}
 	}
 	else if (type == 2)
@@ -62,6 +64,7 @@ void LoginIn(string fileName,int type)
 		//流动人员验证登录
 		string fName;
 		string fPwd;
+		bool val = false;//用于记录登录验证
 		while (ifs >> fName && ifs >> fPwd)
 		{
 			if (name == fName && pwd == fPwd)
@@ -72,12 +75,12 @@ void LoginIn(string fileName,int type)
 				person = new Mobile(name, pwd);
 				return;
 			}
-			else
-			{
-				cout << "用户名或密码有误，请重新输入" << endl;
-				LoginIn(MOBILE_FILE, 2);
-				return;
-			}
+		}
+		if (!val)
+		{
+			cout << "用户名或密码有误，请重新输入" << endl;
+			LoginIn(MOBILE_FILE, 2);
+			return;
 		}
 	}
 	else if (type == 3)
@@ -85,6 +88,7 @@ void LoginIn(string fileName,int type)
 		//管理员验证登录
 		string fName;
 		string fPwd;
+		bool val = false;//用于记录登录验证
 		while (ifs >> fName && ifs >> fPwd)
 		{
 			if (name == fName && pwd == fPwd)
@@ -97,12 +101,12 @@ void LoginIn(string fileName,int type)
 				person = new Manager(name, pwd);
 				return;
 			}
-			else
-			{
-				cout << "用户名或密码有误，请重新输入" << endl;
-				LoginIn(MANAGER_FILE, 3);
-				return;
-			}
+		}
+		if (!val)
+		{
+			cout << "用户名或密码有误，请重新输入" << endl;
+			LoginIn(MANAGER_FILE, 3);
+			return;
 		}
 		
 	}
