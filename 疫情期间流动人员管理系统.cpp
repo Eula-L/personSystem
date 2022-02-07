@@ -11,10 +11,15 @@ using namespace std;
 //by:北辰
 // 输出主界面
 void priMenu();
+
 //准备登录
 void log(bool boo);
 //登录
 void LoginIn(string fileName, string name, string pwd, bool val);
+
+//管理员菜单
+void managerMenu(Identity*& Manager);
+
 
 int main()
 {
@@ -96,21 +101,22 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 			val = true;
 			if (sta == 1)
 			{
-				cout << "普通人";
+				cout << "普通用户："<<fName<<endl;
 				person = new Ordinary(name, pwd);
-				//进入普通人子页面
+				//进入普通用户子页面
 			}
 			else if (sta == 2)
 			{
-				cout << "流动人员";
-				person = new Ordinary(name, pwd);
+				cout << "流动人员：" << fName << endl;
+				person = new Mobile(name, pwd);
 				//进入流动人员子界面
 			}
 			else if (sta == 3)
 			{
-				cout << "管理员";
-				person = new Ordinary(name, pwd);
+				cout << "管理员：" << fName << endl;
+				person = new Manager(name, pwd);
 				//进入管理员子界面
+				managerMenu(person);
 			}
 			cout << "验证登录成功！" << endl;
 
@@ -125,5 +131,48 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 		priMenu();
 		cout << "用户名或密码错误\n请重新输入密码" << endl;
 		log(val);
+	}
+}
+//管理员子页面
+void managerMenu(Identity* & manager)
+{
+	while (true)
+	{
+		//管理员菜单
+		manager->operMenu();
+		Manager* man = (Manager*)manager;
+
+		int select = 0;
+
+		cin >> select;
+
+		if (select == 1)  //添加账号
+		{
+			cout << "查看账号" << endl;
+			man->showPerson();
+		}
+		else if (select == 2) //查看账号
+		{
+			cout << "审核信息" << endl;
+			man->showInfo();
+		}
+		else if (select == 3) //查看机房
+		{
+			cout << "查看公告" << endl;
+			man->showNotice();
+		}
+		else if (select == 4) //清空预约
+		{
+			cout << "更新公告" << endl;
+			man->changeNotice();
+		}
+		else
+		{
+			delete man;
+			cout << "注销成功" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
 	}
 }
