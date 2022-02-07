@@ -186,22 +186,22 @@ void managerMenu(Identity* & manager)
 
 		cin >> select;
 
-		if (select == 1)  //添加账号
+		if (select == 1)  
 		{
 			cout << "查看账号" << endl;
 			man->showPerson();
 		}
-		else if (select == 2) //查看账号
+		else if (select == 2) 
 		{
 			cout << "审核信息" << endl;
 			man->showInfo();
 		}
-		else if (select == 3) //查看机房
+		else if (select == 3) 
 		{
 			cout << "查看公告" << endl;
 			man->showNotice();
 		}
-		else if (select == 4) //清空预约
+		else if (select == 4) 
 		{
 			cout << "更新公告" << endl;
 			man->changeNotice();

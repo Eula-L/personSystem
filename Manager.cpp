@@ -29,7 +29,7 @@ void Manager::operMenu()
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          4.更新公告            |\n";
 	cout << "\t\t|                                |\n";
-	cout << "\t\t|          0.注销登录            |\n";
+	cout << "\t\t|          5.注销登录            |\n";
 	cout << "\t\t|                                |\n";
 	cout << "\t\t ---------------------------------\n";
 	cout << "请选择您的操作： " << endl;
