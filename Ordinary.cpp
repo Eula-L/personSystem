@@ -21,12 +21,6 @@ void Ordinary::operMenu()
 
 }
 
-//注册
-void Ordinary::addPerson()
-{
-
-}
-
 //查看公告
 void Ordinary::showNotice()
 {

@@ -11,14 +11,15 @@ using namespace std;
 //by:北辰
 // 输出主界面
 void priMenu();
-
 //准备登录
 void log(bool boo);
 //登录
 void LoginIn(string fileName, string name, string pwd, bool val);
-
-//管理员菜单
+//注册
+void addPerson();
+//管理员子界面
 void managerMenu(Identity*& Manager);
+
 
 
 int main()
@@ -39,6 +40,8 @@ int main()
 			log(val);
 			break;
 		case 2://注册
+			system("cls");
+			addPerson();
 			break;
 		case 3://退出系统
 			cout << "感谢您使用！" << endl;
@@ -124,6 +127,51 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 		cout << "用户名或密码错误\n请重新输入密码" << endl;
 		log(val);
 	}
+}
+//注册
+void addPerson()
+{
+	ofstream ofs;
+	string name;
+	string pwd1;
+	string pwd2;
+	int cla = 0;//用于记录类型
+	cout << "\t\t -------------------------------\n";
+	cout << "\t\t|                               \n";
+	cout << "\t\t|          1.普通用户           \n";
+	cout << "\t\t|                               \n";
+	cout << "\t\t|          2.流动人员           \n";
+	cout << "\t\t|                               \n";
+	cout << "\t\t|          3.管理员            \n";
+	cout << "\t\t|                               \n";
+	cout << "\t\t -------------------------------\n";
+	cout << "请选择要注册的账户类型"<<endl;
+	cin >> cla;
+	cout << "请输入姓名" << endl;
+	cin >> name;
+	cout << "请输入密码" << endl;
+	cin >> pwd1;
+	cout << "请再次输入密码" << endl;
+	cin >> pwd2;
+	//检验两次密码是否相同
+	if (pwd1 == pwd2)
+	{
+		//向账号信息文件中写入新的用户信息
+		ofs.open(PEOPLE, ios::out | ios::app);
+		ofs <<"\n"<< name << " " << pwd1 << " " << cla << endl;
+		cout << "注册成功" << endl;
+		system("pause");
+		system("cls");
+		return;
+	}
+	else
+	{
+		cout << "两次输入的密码不相同，请重新输入" << endl;//但是这种方法用户名也得重新输入
+		system("pause");
+		system("cls");
+		addPerson();
+	}
+	
 }
 //管理员子页面
 void managerMenu(Identity* & manager)

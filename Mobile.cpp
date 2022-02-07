@@ -20,12 +20,6 @@ void Mobile::operMenu()
 
 }
 
-//注册
-void Mobile::addPerson()
-{
-
-}
-
 //查看公告
 void Mobile::showNotice()
 {

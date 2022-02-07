@@ -35,11 +35,6 @@ void Manager::operMenu()
 	cout << "ÇëÑ¡ÔñÄúµÄ²Ù×÷£º " << endl;
 }
 
-//×¢²á
-void Manager::addPerson()
-{
-
-}
 
 //¹ÜÀíÕËºÅ
 //²é¿´ÕËºÅ
