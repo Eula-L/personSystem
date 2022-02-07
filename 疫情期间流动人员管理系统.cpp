@@ -8,7 +8,7 @@ using namespace std;
 #include"Mobile.h"
 #include"Manager.h"
 
-//by:北辰1231
+//by:北辰
 
 //登录LoginIn
 void LoginIn(string fileName,int type)
