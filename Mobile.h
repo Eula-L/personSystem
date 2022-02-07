@@ -16,8 +16,9 @@ public:
 	//默认构造
 	Mobile();
 	//有参构造（姓名即用户名，密码，身份证号，电话号，始发地，出行方式，车次，家庭住址）
-	Mobile(string name, string pwd, string id, string phone_id, string start, int way, string way_id,string home);
-	
+	//Mobile(string name, string pwd, string id, string phone_id, string start, int way, string way_id,string home);
+	Mobile(string name, string pwd);
+
 	//菜单界面
 	virtual void operMenu();
 	//注册

@@ -1,7 +1,7 @@
 #pragma once
 
 //管理员文件
-#define MANAGER_FILE "Manger.txt"
+#define MANAGER_FILE "Manager.txt"
 //流动人员文件
 #define MOBILE_FILE "Mobile.txt"
 //普通人员文件

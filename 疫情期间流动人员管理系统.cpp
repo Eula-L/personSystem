@@ -4,6 +4,10 @@
 using namespace std;
 #include"Identity.h"
 #include"globalFile.h"
+#include"Ordinary.h"
+#include"Mobile.h"
+#include"Manager.h"
+
 //by:北辰1231
 
 //登录LoginIn
@@ -33,16 +37,73 @@ void LoginIn(string fileName,int type)
 	if (type == 1)
 	{
 		//普通人验证登录
-		
+		string fName;
+		string fPwd;
+		while (ifs >> fName && ifs >> fPwd)
+		{
+			if (name == fName && pwd == fPwd)
+			{
+				cout << "普通人验证登录成功！" << endl;
+				system("pause");
+				system("cls");
+				person = new Ordinary(name, pwd);
+				return;
+			}
+			else
+			{
+				cout << "用户名或密码有误，请重新输入" << endl;
+				LoginIn(ORDINARY_FILE, 1);
+				return;
+			}
+		}
 	}
 	else if (type == 2)
 	{
 		//流动人员验证登录
-		
+		string fName;
+		string fPwd;
+		while (ifs >> fName && ifs >> fPwd)
+		{
+			if (name == fName && pwd == fPwd)
+			{
+				cout << "流动人员验证登录成功！" << endl;
+				system("pause");
+				system("cls");
+				person = new Mobile(name, pwd);
+				return;
+			}
+			else
+			{
+				cout << "用户名或密码有误，请重新输入" << endl;
+				LoginIn(MOBILE_FILE, 2);
+				return;
+			}
+		}
 	}
 	else if (type == 3)
 	{
 		//管理员验证登录
+		string fName;
+		string fPwd;
+		while (ifs >> fName && ifs >> fPwd)
+		{
+			if (name == fName && pwd == fPwd)
+			{
+				cout << "管理员验证登录成功!" << endl;
+				//登录成功后，按任意键进入管理员界面
+				system("pause");
+				system("cls");
+				//创建管理员对象
+				person = new Manager(name, pwd);
+				return;
+			}
+			else
+			{
+				cout << "用户名或密码有误，请重新输入" << endl;
+				LoginIn(MANAGER_FILE, 3);
+				return;
+			}
+		}
 		
 	}
 
