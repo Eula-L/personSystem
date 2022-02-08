@@ -17,6 +17,11 @@ void log(bool boo);
 void LoginIn(string fileName, string name, string pwd, bool val);
 //注册
 void addPerson();
+
+//引入容器
+vector<Ordinary>vPer;
+//检测重复 参数:(传入id，传入类型) 返回值：(true 代表有重复，false代表没有重复)
+bool checkRepeat(string name, int type);
 //管理员子界面
 void managerMenu(Identity*& Manager);
 
@@ -128,9 +133,11 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 		log(val);
 	}
 }
+
 //注册
 void addPerson()
 {
+	system("cls");
 	ofstream ofs;
 	string name;
 	string pwd1;
@@ -149,10 +156,19 @@ void addPerson()
 	cin >> cla;
 	cout << "请输入姓名" << endl;
 	cin >> name;
+
+	//避免用户名重复
+	if (checkRepeat(name, cla)) //有重复
+	{
+		cout << "用户名已存在,请重新输入" << endl;
+		system("pause");
+		addPerson();
+	}
 	cout << "请输入密码" << endl;
 	cin >> pwd1;
 	cout << "请再次输入密码" << endl;
 	cin >> pwd2;
+
 	//检验两次密码是否相同
 	if (pwd1 == pwd2)
 	{
@@ -172,6 +188,25 @@ void addPerson()
 		addPerson();
 	}
 	
+}
+//检测重复 参数:(传入id，传入类型) 返回值：(true 代表有重复，false代表没有重复)
+bool checkRepeat(string name, int type)
+{
+	//读取账号文件中信息
+	ifstream ifs;
+	ifs.open(PEOPLE, ios::in);
+	vPer.clear();
+	string e_name;
+	string e_pwd;
+	int e_val;
+	while (ifs >> e_name && ifs >> e_pwd && ifs >> e_val)
+	{
+		if (name == e_name && type == e_val)
+		{
+			return true;
+		}
+	}
+	return false;
 }
 //管理员子页面
 void managerMenu(Identity* & manager)
