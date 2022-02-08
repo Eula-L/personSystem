@@ -39,7 +39,49 @@ void Manager::operMenu()
 	cout << "\t\t ---------------------------------\n";
 	cout << "请选择您的操作： " << endl;
 }
+//管理员子界面
+void Manager::managerMenu(Identity*& manager)
+{
+	while (true)
+	{
+		//管理员菜单
+		manager->operMenu();
+		Manager* man = (Manager*)manager;
 
+		int select = 0;
+
+		cin >> select;
+
+		if (select == 1)
+		{
+			cout << "查看账号" << endl;
+			man->showPerson();
+		}
+		else if (select == 2)
+		{
+			cout << "审核信息" << endl;
+			man->showInfo();
+		}
+		else if (select == 3)
+		{
+			cout << "查看公告" << endl;
+			man->showNotice();
+		}
+		else if (select == 4)
+		{
+			cout << "更新公告" << endl;
+			man->changeNotice();
+		}
+		else
+		{
+			delete man;
+			cout << "注销成功" << endl;
+			system("pause");
+			system("cls");
+			return;
+		}
+	}
+}
 
 //管理账号
 //查看账号

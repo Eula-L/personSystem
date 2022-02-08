@@ -18,12 +18,9 @@ void LoginIn(string fileName, string name, string pwd, bool val);
 //注册
 void addPerson();
 
-//引入容器
-vector<Ordinary>vPer;
 //检测重复 参数:(传入id，传入类型) 返回值：(true 代表有重复，false代表没有重复)
 bool checkRepeat(string name, int type);
-//管理员子界面
-void managerMenu(Identity*& Manager);
+
 
 
 
@@ -120,8 +117,9 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 			else if (sta == 3)
 			{
 				person = new Manager(name, pwd);
+				Manager* menu = new Manager;
 				//进入管理员子界面
-				managerMenu(person);
+				menu->managerMenu(person);
 			}
 			return;
 		}
@@ -194,8 +192,7 @@ bool checkRepeat(string name, int type)
 {
 	//读取账号文件中信息
 	ifstream ifs;
-	ifs.open(PEOPLE, ios::in);
-	vPer.clear();
+	ifs.open(PEOPLE, ios::in);	
 	string e_name;
 	string e_pwd;
 	int e_val;
@@ -207,47 +204,4 @@ bool checkRepeat(string name, int type)
 		}
 	}
 	return false;
-}
-//管理员子页面
-void managerMenu(Identity* & manager)
-{
-	while (true)
-	{
-		//管理员菜单
-		manager->operMenu();
-		Manager* man = (Manager*)manager;
-
-		int select = 0;
-
-		cin >> select;
-
-		if (select == 1)  
-		{
-			cout << "查看账号" << endl;
-			man->showPerson();
-		}
-		else if (select == 2) 
-		{
-			cout << "审核信息" << endl;
-			man->showInfo();
-		}
-		else if (select == 3) 
-		{
-			cout << "查看公告" << endl;
-			man->showNotice();
-		}
-		else if (select == 4) 
-		{
-			cout << "更新公告" << endl;
-			man->changeNotice();
-		}
-		else
-		{
-			delete man;
-			cout << "注销成功" << endl;
-			system("pause");
-			system("cls");
-			return;
-		}
-	}
 }

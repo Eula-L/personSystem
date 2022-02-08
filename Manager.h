@@ -21,7 +21,8 @@ public:
 
 	//选择菜单
 	virtual void operMenu();
-
+	//管理员子界面
+	void managerMenu(Identity*& manager);
 	//注册
 	void addPerson();
 	//防止账号重复
