@@ -7,6 +7,7 @@
 */
 #pragma once
 #include<iostream>
+#include<vector>
 using namespace std;
 #include"Identity.h"
 
@@ -23,6 +24,11 @@ public:
 
 	//注册
 	void addPerson();
+	//防止账号重复
+	//初始化容器
+	void initVector();
+	//引入容器******************
+	vector<Ordinary>vPer;
 
 	//管理账号
 	//查看账号
