@@ -219,6 +219,7 @@ void Manager::changeNotice()
 	string homeLoc;
 	ifstream ifs;
 	ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
+	cout << "已上报信息人员：";
 	while (ifs >> name && ifs >> ID && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
 	{
 		cout << name << " ";
@@ -226,10 +227,16 @@ void Manager::changeNotice()
 	cout << endl;
 	cout << "请输入要发布信息的人数" << endl;
 	cin >> n;
+	string arr[100];
+	cout << "请输入要发布的人的姓名" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> arr[i];
+	}
 	for (int i = 0; i <n; i++)
 	{
-		cout << "请输入要发布的人的姓名" << endl;
-		cin >> name1;
+		
+		name1=arr[i];
 		//读文件
 		ifstream ifs;
 		ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
@@ -243,6 +250,7 @@ void Manager::changeNotice()
 			}
 		}
 	}
+	cout << "公告发布完成";
 	system("pause");
 	system("cls");
 }
