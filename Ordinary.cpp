@@ -1,8 +1,11 @@
 //普通人类
 #pragma once
 #include<iostream>
+#include<fstream>
+#include <iomanip>//格式输出
 using namespace std;
 #include"Ordinary.h"
+#include"globalFile.h"
 
 //默认构造
 Ordinary::Ordinary()
@@ -23,9 +26,8 @@ void Ordinary::operMenu()
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          1.查看公告             |\n";
 	cout << "\t\t|                                |\n";
-	cout << "\t\t|          2.更改账户类型         |\n";
 	cout << "\t\t|                                |\n";
-	cout << "\t\t|          3.注销登陆             |\n";
+	cout << "\t\t|          2.注销登陆             |\n";
 	cout << "\t\t ---------------------------------\n";
 	cout << "请选择您的操作： " << endl;
 }
@@ -48,11 +50,6 @@ void Ordinary::ordinaryMenu(Identity*& ordinary)
 			cout << "查看公告" << endl;
 			man->showNotice();
 		}
-		else if (select == 2)
-		{
-			cout << "更改账户类型" << endl;
-			man->changeType();
-		}
 		else
 		{
 			delete man;
@@ -66,7 +63,39 @@ void Ordinary::ordinaryMenu(Identity*& ordinary)
 //查看公告
 void Ordinary::showNotice()
 {
-
+	//存储信息
+	string name;
+	string phone;
+	string startLoc;
+	int way;//1：火车2：客车3：飞机4：其他
+	int wayID;
+	string homeLoc;
+	//读文件
+	ifstream ifs;
+	ifs.open(NOTICE, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
+	while (ifs >> name && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
+	{
+		cout << setw(15) << std::left << name << setw(15) << std::left << phone << setw(15) << std::left << startLoc;
+		if (way == 1)
+		{
+			cout << setw(15) << std::left << "火车";
+		}
+		else if (way == 2)
+		{
+			cout << setw(15) << std::left << "客车";
+		}
+		else if (way == 3)
+		{
+			cout << setw(15) << std::left << "飞机";
+		}
+		else if (way == 4)
+		{
+			cout << setw(15) << std::left << "其他";
+		}
+		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
+	}
+	system("pause");
+	system("cls");
 }
 //更改用户类型
 void Ordinary::changeType()

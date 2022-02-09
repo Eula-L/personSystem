@@ -21,6 +21,8 @@ public:
 
 	//菜单界面
 	virtual void operMenu();
+	//流动人员子界面
+	void mobileMenu(Identity*& mobile);
 	//注册
 	void addPerson();
 	

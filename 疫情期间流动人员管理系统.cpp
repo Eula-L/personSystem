@@ -115,6 +115,8 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 			{
 				person = new Mobile(name, pwd);
 				//进入流动人员子界面
+				Mobile* menu = new Mobile;
+				menu->mobileMenu(person);
 				
 			}
 			else if (sta == 3)
