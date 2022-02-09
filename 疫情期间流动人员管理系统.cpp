@@ -17,7 +17,6 @@ void log(bool boo);
 void LoginIn(string fileName, string name, string pwd, bool val);
 //注册
 void addPerson();
-
 //检测重复 参数:(传入id，传入类型) 返回值：(true 代表有重复，false代表没有重复)
 bool checkRepeat(string name, int type);
 
@@ -108,11 +107,15 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 			{
 				person = new Ordinary(name, pwd);
 				//进入普通用户子页面
+				Ordinary* menu = new Ordinary;
+				menu->ordinaryMenu(person);
+
 			}
 			else if (sta == 2)
 			{
 				person = new Mobile(name, pwd);
 				//进入流动人员子界面
+				
 			}
 			else if (sta == 3)
 			{
@@ -170,8 +173,8 @@ void addPerson()
 	//检验两次密码是否相同
 	if (pwd1 == pwd2)
 	{
-		//向账号信息文件中写入新的用户信息
-		ofs.open(PEOPLE, ios::out | ios::app);
+		//向公告信息文件中写入新的用户信息
+		ofs.open(NOTICE, ios::out | ios::app);
 		ofs <<"\n"<< name << " " << pwd1 << " " << cla << endl;
 		cout << "注册成功" << endl;
 		system("pause");
