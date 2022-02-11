@@ -21,10 +21,6 @@ public:
 	virtual void operMenu();
 	//普通用户子界面
 	void ordinaryMenu(Identity*& ordinary);
-	//注册
-	void addPerson();
 	//查看公告
 	void showNotice();
-	//更改用户类型
-	void changeType();
 };

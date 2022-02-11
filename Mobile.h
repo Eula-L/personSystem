@@ -15,22 +15,16 @@ class Mobile :public Identity
 public:
 	//默认构造
 	Mobile();
-	//有参构造（姓名即用户名，密码，身份证号，电话号，始发地，出行方式，车次，家庭住址）
-	//Mobile(string name, string pwd, string id, string phone_id, string start, int way, string way_id,string home);
+	//有参构造
 	Mobile(string name, string pwd);
-
 	//菜单界面
 	virtual void operMenu();
 	//流动人员子界面
 	void mobileMenu(Identity*& mobile);
-	//注册
-	void addPerson();
-	
 	//查看公告
 	void showNotice();
 	//填报信息
 	void addInfo();
-
 	//独有属性
 	string m_Id;
 	string m_phone_id;

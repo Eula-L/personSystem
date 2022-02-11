@@ -23,15 +23,8 @@ public:
 	virtual void operMenu();
 	//管理员子界面
 	void managerMenu(Identity*& manager);
-	//注册
-	void addPerson();
-	//防止账号重复
-	
-	
-	//管理账号
 	//查看账号
 	void showPerson();
-
 	//查看当前上报信息
 	void showInfo();
 	//更新公告

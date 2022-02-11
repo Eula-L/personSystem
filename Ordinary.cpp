@@ -98,8 +98,3 @@ void Ordinary::showNotice()
 	system("pause");
 	system("cls");
 }
-//更改用户类型
-void Ordinary::changeType()
-{
-
-}
