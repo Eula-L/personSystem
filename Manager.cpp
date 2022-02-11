@@ -95,7 +95,6 @@ void Manager::showPerson()
 	int sta = 0;//txt中第三列表示身份：1、普通人2、流动人员3、管理员
 	for (int i = 3; i > 0; i--)
 	{
-		cout << i << endl;
 		if (i == 3)
 		{
 			
