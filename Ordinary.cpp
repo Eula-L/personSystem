@@ -68,7 +68,7 @@ void Ordinary::showNotice()
 	string phone;
 	string startLoc;
 	int way;//1：火车2：客车3：飞机4：其他
-	int wayID;
+	string wayID;
 	string homeLoc;
 	//读文件
 	ifstream ifs;
@@ -94,6 +94,7 @@ void Ordinary::showNotice()
 		}
 		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
 	}
+	ifs.close();
 	system("pause");
 	system("cls");
 }

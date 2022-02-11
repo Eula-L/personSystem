@@ -164,6 +164,7 @@ void Manager::showInfo()
 		}
 		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
 	}
+	ifs.close();
 	system("pause");
 	system("cls");
 }
@@ -175,7 +176,7 @@ void Manager::showNotice()
 	string phone;
 	string startLoc;
 	int way;//1：火车2：客车3：飞机4：其他
-	int wayID;
+	string  wayID;
 	string homeLoc;
 	//读文件
 	ifstream ifs;
@@ -201,6 +202,7 @@ void Manager::showNotice()
 		}
 		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
 	}
+	ifs.close();
 	system("pause");
 	system("cls");
 }
@@ -251,6 +253,7 @@ void Manager::changeNotice()
 		}
 	}
 	cout << "公告发布完成";
+	ifs.close();
 	system("pause");
 	system("cls");
 }
