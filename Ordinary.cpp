@@ -21,7 +21,7 @@ Ordinary::Ordinary(string name, string pwd)
 //菜单界面
 void Ordinary::operMenu()
 {
-	cout << "欢迎普通用户：" << this->m_Name << "登录！" << endl;
+	cout << "欢迎普通用户" << "登录！" << endl;
 	cout << "\t\t ---------------------------------\n";
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          1.查看公告             |\n";

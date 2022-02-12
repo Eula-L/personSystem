@@ -21,7 +21,7 @@ Mobile::Mobile(string name, string pwd)
 //菜单界面
 void Mobile::operMenu()
 {
-	cout << "欢迎流动人员：" << this->m_Name << "登录！" << endl;
+	cout << "欢迎流动人员"  << "登录！" << endl;
 	cout << "\t\t ---------------------------------\n";
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          1.查看公告            |\n";
