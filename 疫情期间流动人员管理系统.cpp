@@ -173,24 +173,19 @@ void addPerson()
 	cin >> pwd2;
 
 	//检验两次密码是否相同
-	if (pwd1 == pwd2)
-	{
-		//向公告信息文件中写入新的用户信息
-		ofs.open(NOTICE, ios::out | ios::app);
-		ofs <<"\n"<< name << " " << pwd1 << " " << cla << endl;
-		cout << "注册成功" << endl;
-		system("pause");
-		system("cls");
-		return;
-	}
-	else
+	if (pwd1 != pwd2)
 	{
 		cout << "两次输入的密码不相同，请重新输入" << endl;//但是这种方法用户名也得重新输入
 		system("pause");
 		system("cls");
 		addPerson();
 	}
-	
+	//向账号信息文件中写入新的用户信息
+	ofs.open(PEOPLE, ios::out | ios::app);
+	ofs << "\n" << name << " " << pwd1 << " " << cla << endl;
+	cout << "注册成功" << endl;
+	system("pause");
+	system("cls");
 }
 //检测重复 参数:(传入id，传入类型) 返回值：(true 代表有重复，false代表没有重复)
 bool checkRepeat(string name, int type)
