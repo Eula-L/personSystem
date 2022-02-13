@@ -3,6 +3,16 @@
 #include<iostream>
 #include<string>
 using namespace std;
+struct MyStruct
+{
+	string name;
+	string ID;
+	string phone;
+	string startLoc;
+	int way = 0;//1：火车2：客车3：飞机4：其他
+	string wayID;
+	string homeLoc;
+};
 
 //身份抽象类
 class Identity

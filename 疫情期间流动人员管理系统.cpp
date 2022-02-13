@@ -94,7 +94,6 @@ void LoginIn(string fileName, string name, string pwd, bool val)
 	//读文件
 	ifstream ifs;
 	ifs.open(fileName, ios::in);
-
 	string fName;
 	string fPwd;
 	int sta = 0;//txt中第三列表示身份：1、普通人2、流动人员3、管理员

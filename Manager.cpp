@@ -130,38 +130,32 @@ void Manager::showPerson()
 void Manager::showInfo()
 {
 	//存储信息
-	string name;
-	string ID;
-	string phone;
-	string startLoc;
-	int way=0;//1：火车2：客车3：飞机4：其他
-	string wayID;
-	string homeLoc;
+	MyStruct my;
 	cout << setw(15) << std::left << "姓名" << setw(15) << std::left << "身份证号" << setw(15) << std::left << "电话号" << setw(15) << std::left << "始发地"<<setw(15) << std::left <<"出行方式"<<setw(15) << std::left <<"车次"<<setw(15) << std::left << "家庭住址"<<endl;
 	//读文件
 	ifstream ifs;
 	ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
-	while (ifs >> name && ifs >> ID && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
+	while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 	{
 		
-		cout << setw(15) << std::left << name << setw(15) << std::left << ID << setw(15) << std::left << phone << setw(15) << std::left << startLoc;
-		if (way == 1)
+		cout << setw(15) << std::left << my.name << setw(15) << std::left << my.ID << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		if (my.way == 1)
 		{
 			cout<< setw(15) << std::left << "火车";
 		}
-		else if(way==2)
+		else if(my.way==2)
 		{
 			cout<< setw(15) << std::left << "客车";
 		}
-		else if(way==3)
+		else if(my.way==3)
 		{
 			cout << setw(15) << std::left << "飞机";
 		}
-		else if(way==4)
+		else if(my.way==4)
 		{
 			cout << setw(15) << std::left << "其他";
 		}
-		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
+		cout << setw(15) << std::left << my.wayID << setw(15) << std::left << my.homeLoc << endl;
 	}
 	ifs.close();
 	system("pause");
@@ -171,35 +165,30 @@ void Manager::showInfo()
 void Manager::showNotice()
 {
 	//存储信息
-	string name;
-	string phone;
-	string startLoc;
-	int way;//1：火车2：客车3：飞机4：其他
-	string  wayID;
-	string homeLoc;
+	MyStruct my;
 	//读文件
 	ifstream ifs;
 	ifs.open(NOTICE, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
-	while (ifs >> name  && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
+	while (ifs >> my.name  && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 	{
-		cout << setw(15) << std::left << name  << setw(15) << std::left << phone << setw(15) << std::left << startLoc;
-		if (way == 1)
+		cout << setw(15) << std::left << my.name  << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		if (my.way == 1)
 		{
 			cout << setw(15) << std::left << "火车";
 		}
-		else if (way == 2)
+		else if (my.way == 2)
 		{
 			cout << setw(15) << std::left << "客车";
 		}
-		else if (way == 3)
+		else if (my.way == 3)
 		{
 			cout << setw(15) << std::left << "飞机";
 		}
-		else if (way == 4)
+		else if (my.way == 4)
 		{
 			cout << setw(15) << std::left << "其他";
 		}
-		cout << setw(15) << std::left << wayID << setw(15) << std::left << homeLoc << endl;
+		cout << setw(15) << std::left << my.wayID << setw(15) << std::left << my.homeLoc << endl;
 	}
 	ifs.close();
 	system("pause");
@@ -211,19 +200,13 @@ void Manager::changeNotice()
 	//向账号信息文件中写入新的用户信息
 	int n;
 	string name1;
-	string name;
-	string ID;
-	string phone;
-	string startLoc;
-	int way = 0;//1：火车2：客车3：飞机4：其他
-	string wayID;
-	string homeLoc;
+	MyStruct my;
 	ifstream ifs;
 	ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
 	cout << "已上报信息人员：";
-	while (ifs >> name && ifs >> ID && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
+	while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 	{
-		cout << name << " ";
+		cout << my.name << " ";
 	}
 	cout << endl;
 	cout << "请输入要发布信息的人数" << endl;
@@ -241,13 +224,13 @@ void Manager::changeNotice()
 		//读文件
 		ifstream ifs;
 		ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
-		while (ifs >> name && ifs >> ID && ifs >> phone && ifs >> startLoc && ifs >> way && ifs >> wayID && ifs >> homeLoc)
+		while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 		{
-			if (name == name1)
+			if (my.name == name1)
 			{
 				ofstream ofs;
 				ofs.open(NOTICE, ios::out | ios::app);
-				ofs << "\n" << name << " " << phone << " " << startLoc << " " << way << " "<<wayID << " " << homeLoc;
+				ofs << "\n" << my.name << " " << my.phone << " " << my.startLoc << " " << my.way << " "<< my.wayID << " " << my.homeLoc;
 			}
 		}
 	}
