@@ -29,6 +29,8 @@ public:
 	void showInfo();
 	//更新公告
 	void changeNotice();
+	//清空公告
+	void cleanNotice();
 	//查看公告
 	void showNotice();
 

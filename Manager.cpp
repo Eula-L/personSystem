@@ -35,9 +35,9 @@ void Manager::operMenu()
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          4.清空公告            |\n";
 	cout << "\t\t|                                |\n";
-	cout << "\t\t|          4.更新公告            |\n";
+	cout << "\t\t|          5.更新公告            |\n";
 	cout << "\t\t|                                |\n";
-	cout << "\t\t|          5.注销登录            |\n";
+	cout << "\t\t|          6.注销登录            |\n";
 	cout << "\t\t|                                |\n";
 	cout << "\t\t ---------------------------------\n";
 	cout << "请选择您的操作： " << endl;
@@ -71,6 +71,11 @@ void Manager::managerMenu(Identity*& manager)
 			man->showNotice();
 		}
 		else if (select == 4)
+		{
+			cout << "清空公告" << endl;
+			man->cleanNotice();
+		}
+		else if (select == 5)
 		{
 			cout << "更新公告" << endl;
 			man->changeNotice();
@@ -196,10 +201,20 @@ void Manager::showNotice()
 	system("pause");
 	system("cls");
 }
+
+//清空公告
+void Manager::cleanNotice()
+{	
+		fstream file(NOTICE, ios::out);
+		system("pause");
+		system("cls");
+}
+
 //更新公告
 void Manager::changeNotice()
 {
 	//向账号信息文件中写入新的用户信息
+	//并且删除上报信息文件中对应的人的信息
 	int n;
 	string name1;
 	MyStruct my;
@@ -213,7 +228,7 @@ void Manager::changeNotice()
 	cout << endl;
 	cout << "请输入要发布信息的人数" << endl;
 	cin >> n;
-	string arr[100];
+	string arr[1000];
 	cout << "请输入要发布的人的姓名" << endl;
 	for (int i = 0; i < n; i++)
 	{
@@ -223,13 +238,13 @@ void Manager::changeNotice()
 	{
 		
 		name1=arr[i];
-		//读文件
+		//读上报信息文件
 		ifstream ifs;
 		ifs.open(INFOMATION, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
 		while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 		{
 			if (my.name == name1)
-			{
+			{	//将读取的信息写入到公告中
 				ofstream ofs;
 				ofs.open(NOTICE, ios::out | ios::app);
 				ofs << "\n" << my.name << " " << my.phone << " " << my.startLoc << " " << my.way << " "<< my.wayID << " " << my.homeLoc;
