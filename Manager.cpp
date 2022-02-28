@@ -33,6 +33,8 @@ void Manager::operMenu()
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          3.查看公告            |\n";
 	cout << "\t\t|                                |\n";
+	cout << "\t\t|          4.清空公告            |\n";
+	cout << "\t\t|                                |\n";
 	cout << "\t\t|          4.更新公告            |\n";
 	cout << "\t\t|                                |\n";
 	cout << "\t\t|          5.注销登录            |\n";
