@@ -1,5 +1,4 @@
 #pragma once
-
 //账号信息文件
 #define PEOPLE "People.txt"
 //上报信息文件

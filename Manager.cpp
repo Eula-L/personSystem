@@ -244,7 +244,8 @@ void Manager::changeNotice()
 		while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 		{
 			if (my.name == name1)
-			{	//将读取的信息写入到公告中
+			{	
+				//将读取的信息写入到公告中
 				ofstream ofs;
 				ofs.open(NOTICE, ios::out | ios::app);
 				ofs << "\n" << my.name << " " << my.phone << " " << my.startLoc << " " << my.way << " "<< my.wayID << " " << my.homeLoc;
