@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="globalFile.h" />
     <ClInclude Include="Identity.h" />
+    <ClInclude Include="interface.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Mobile.h" />
     <ClInclude Include="Ordinary.h" />

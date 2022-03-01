@@ -1,12 +1,14 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
+#include <windows.h>
 using namespace std;
 #include "Identity.h"
 #include "globalFile.h"
 #include "Ordinary.h"
 #include "Mobile.h"
 #include "Manager.h"
+#include "interface.h"
 
 //by:北辰
 // 输出主界面
@@ -25,6 +27,8 @@ bool checkRepeat(string name, int type);
 
 int main()
 {
+	//修改背景前景颜色
+	setAllColor(7, 0);
 	//创建一个变量记录选择
 	int choose = 0;
 	while (true)
