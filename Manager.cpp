@@ -52,9 +52,18 @@ void Manager::managerMenu(Identity*& manager)
 		Manager* man = (Manager*)manager;
 
 		int select = 0;
-
-		cin >> select;
-
+		while (1)
+		{
+			if (!(cin >> select))
+			{
+				cout << "输入不合法，请重新输入\n";
+				cin.clear(); // 清除输入流错误标记
+				cin.ignore(1024, '\n');// 取走刚才输入流中的字符
+				// cin.ignore()默认取走一个字符
+			}
+			else
+				break;
+		}
 		if (select == 1)
 		{
 			cout << "查看账号" << endl;
@@ -122,8 +131,9 @@ void Manager::showPerson()
 		{
 			if (sta == i)
 			{
-				//应该做一个输出对齐
-				cout << fName << "   " << fPwd << endl;
+				print(fName);
+				print(fPwd);
+				cout << endl;
 			}
 		}
 		cout << endl;
@@ -145,7 +155,11 @@ void Manager::showInfo()
 	while (ifs >> my.name && ifs >> my.ID && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 	{
 		
-		cout << setw(15) << std::left << my.name << setw(15) << std::left << my.ID << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		//cout << setw(15) << std::left << my.name << setw(15) << std::left << my.ID << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		print(my.name);
+		print(my.ID);
+		print(my.phone);
+		print(my.startLoc);
 		if (my.way == 1)
 		{
 			cout<< setw(15) << std::left << "火车";
@@ -162,7 +176,10 @@ void Manager::showInfo()
 		{
 			cout << setw(15) << std::left << "其他";
 		}
-		cout << setw(15) << std::left << my.wayID << setw(15) << std::left << my.homeLoc << endl;
+		//cout << setw(15) << std::left << my.wayID << setw(15) << std::left << my.homeLoc << endl;
+		print(my.wayID);
+		print(my.homeLoc);
+		cout << endl;
 	}
 	ifs.close();
 	system("pause");
@@ -178,7 +195,10 @@ void Manager::showNotice()
 	ifs.open(NOTICE, ios::in);//用户名，身份证号，电话号，始发地，出行方式，车次，家庭住址
 	while (ifs >> my.name  && ifs >> my.phone && ifs >> my.startLoc && ifs >> my.way && ifs >> my.wayID && ifs >> my.homeLoc)
 	{
-		cout << setw(15) << std::left << my.name  << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		//cout << setw(15) << std::left << my.name  << setw(15) << std::left << my.phone << setw(15) << std::left << my.startLoc;
+		print(my.name);
+		print(my.phone);
+		print(my.startLoc);
 		if (my.way == 1)
 		{
 			cout << setw(15) << std::left << "火车";
@@ -257,3 +277,4 @@ void Manager::changeNotice()
 	system("pause");
 	system("cls");
 }
+

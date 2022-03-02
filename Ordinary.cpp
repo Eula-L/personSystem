@@ -43,8 +43,18 @@ void Ordinary::ordinaryMenu(Identity*& ordinary)
 
 		int select = 0;
 
-		cin >> select;
-
+		while (1)
+		{
+			if (!(cin >> select))
+			{
+				cout << "输入不合法，请重新输入\n";
+				cin.clear(); // 清除输入流错误标记
+				cin.ignore(1024, '\n');// 取走刚才输入流中的字符
+				// cin.ignore()默认取走一个字符
+			}
+			else
+				break;
+		}
 		if (select == 1)
 		{
 			cout << "查看公告" << endl;

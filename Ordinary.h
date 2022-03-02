@@ -6,6 +6,7 @@
 */
 #pragma once
 #include<iostream>
+#include <iomanip>//整齐化输出
 using namespace std;
 #include"Identity.h"
 
@@ -23,4 +24,10 @@ public:
 	void ordinaryMenu(Identity*& ordinary);
 	//查看公告
 	void showNotice();
+	//整齐输出函数模板
+	template<typename T>
+	void print(const T& t)
+	{
+		cout << setw(15) << std::left << t;//左对齐，占据15个字符
+	}
 };
